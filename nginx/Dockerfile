@@ -5,8 +5,6 @@ ARG NJS_VERSION=0.3.7
 ARG PKG_RELEASE=1
 
 RUN set -x \
-    # change sources
-    && sed -i "s#https://mirrors.tuna.tsinghua.edu.cn/alpine#http://dl-cdn.alpinelinux.org/alpine#g" /etc/apk/repositories \
     # create nginx user/group first, to be consistent throughout docker variants
     && addgroup -g 101 -S nginx \
     && adduser -S -D -H -u 101 -h /var/cache/nginx -s /sbin/nologin -G nginx -g nginx nginx \
@@ -96,6 +94,8 @@ RUN set -x \
     && apk add --no-cache $runDeps \
     && apk del .gettext \
     && mv /tmp/envsubst /usr/local/bin/ \
+    # use custom nginx.conf
+    && wget https://gist.githubusercontent.com/nediiii/067fe50fdc273a9fe522afa4268897c2/raw/a5c348ac477caa260d44f1279d618b9c7d523955/nginx.conf -O /etc/nginx/nginx.conf \
     # forward request and error logs to docker log collector
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
