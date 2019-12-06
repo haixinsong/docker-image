@@ -1,6 +1,6 @@
 FROM nediiii/alpine:3.10
 
-ARG mirrors=https://registry.npm.taobao.org/
+ARG MIRRORS=https://registry.npm.taobao.org/
 
 ARG NODE_VERSION=12.13.1
 ARG YARN_VERSION=1.19.1
@@ -89,6 +89,6 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
     && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
     && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
     && apk del .build-deps-yarn \
-    &&　yarn config set registry ${mirrors}
+    && yarn config set registry ${MIRRORS}
 
 CMD [ "node" ]
