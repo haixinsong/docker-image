@@ -4,8 +4,8 @@ ENV MIRRORS=https://mirrors.aliyun.com/alpine \
     ARCH=x86_64 \
     TZ=Asia/Shanghai
 
-ENV MAJOR_VERSION=3.10 \
-    MINOR_VERSION=3
+ENV MAJOR_VERSION=3.11 \
+    MINOR_VERSION=2
 
 RUN sed -i "s#http://dl-cdn.alpinelinux.org/alpine#${MIRRORS}#g" /etc/apk/repositories && \
     apk add --no-cache ca-certificates tzdata && ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
@@ -26,5 +26,3 @@ FROM scratch
 COPY --from=builder /alpine-minirootfs /
 
 CMD ["/bin/sh"]
-
-# docker build . --no-cache -t nediiii/alpine:3.10 -t nediiii/alpine:3.10.3
