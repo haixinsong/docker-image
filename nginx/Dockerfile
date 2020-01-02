@@ -1,4 +1,4 @@
-FROM nediiii/alpine:3.10
+FROM nediiii/alpine:3.11
 
 ARG NGINX_VERSION=1.17.6
 ARG NJS_VERSION=0.3.7

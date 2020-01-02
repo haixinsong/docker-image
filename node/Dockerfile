@@ -1,4 +1,4 @@
-FROM nediiii/alpine:3.10
+FROM nediiii/alpine:3.11
 
 ARG MIRRORS=https://registry.npm.taobao.org/
 

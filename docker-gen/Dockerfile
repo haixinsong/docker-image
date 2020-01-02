@@ -1,4 +1,4 @@
-FROM nediiii/alpine:3.10
+FROM nediiii/alpine:3.11
 
 ARG VERSION=0.7.3
 ARG DOWNLOAD_URL=https://github.com/jwilder/docker-gen/releases/download/$VERSION/docker-gen-alpine-linux-amd64-$VERSION.tar.gz

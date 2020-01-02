@@ -6,7 +6,7 @@ RUN curl -L -o /tmp/go.sh https://install.direct/go.sh
 RUN chmod +x /tmp/go.sh
 RUN /tmp/go.sh
 
-FROM nediiii/alpine:3.10
+FROM nediiii/alpine:3.11
 
 COPY --from=builder /usr/bin/v2ray /usr/bin/v2ray
 

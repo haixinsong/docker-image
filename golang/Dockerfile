@@ -1,4 +1,4 @@
-FROM nediiii/alpine:3.10 as builder
+FROM nediiii/alpine:3.11 as builder
 
 # I don't know why need ca-certificates
 # RUN apk add --no-cache ca-certificates
@@ -62,7 +62,7 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 WORKDIR $GOPATH
 
-FROM nediiii/alpine:3.10
+FROM nediiii/alpine:3.11
 
 COPY --from=builder /usr/local/go /usr/local/go
 RUN ln -sf /usr/local/go/bin/go /usr/bin/go && \

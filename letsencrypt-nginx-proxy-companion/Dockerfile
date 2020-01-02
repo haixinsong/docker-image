@@ -1,6 +1,6 @@
 FROM nediiii/docker-gen:alpine AS docker-gen
 
-FROM nediiii/alpine:3.10
+FROM nediiii/alpine:3.11
 
 ARG VERSION=1.12
 ARG DOWNLOAD_URL=https://github.com/JrCs/docker-letsencrypt-nginx-proxy-companion/archive/v$VERSION.tar.gz
