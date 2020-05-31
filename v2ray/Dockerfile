@@ -1,17 +1,15 @@
 FROM ubuntu:latest as builder
 
 RUN apt-get update
-RUN apt-get install curl -y
-RUN curl -L -o /tmp/go.sh https://install.direct/go.sh
-RUN chmod +x /tmp/go.sh
-RUN /tmp/go.sh
+RUN apt-get install wget unzip -y
+RUN wget https://github.com/v2ray/v2ray-core/releases/download/v4.23.2/v2ray-linux-64.zip
+RUN unzip v2ray-linux-64.zip -d /v2raydir
 
 FROM nediiii/alpine:3.11
 
-COPY --from=builder /usr/bin/v2ray /usr/bin/v2ray
+COPY --from=builder /v2raydir /usr/bin/v2ray
 
 RUN set -ex && \
-    sed -i "s#https://mirrors.tuna.tsinghua.edu.cn/alpine#http://dl-cdn.alpinelinux.org/alpine#g" /etc/apk/repositories && \
     chmod +x /usr/bin/v2ray/v2ctl && \
     chmod +x /usr/bin/v2ray/v2ray && \
     mkdir /etc/v2ray && \
