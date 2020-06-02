@@ -1,7 +1,9 @@
 .PHONY: ubuntu
 
+VERSION=20.04
+
 ubuntu:
 	cd $@ && \
 	docker build . --no-cache \
 	-t ${USERNAME}/$@ \
-	-t ${USERNAME}/$@:18.04 \
+	-t ${USERNAME}/$@:${VERSION} \
